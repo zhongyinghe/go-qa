@@ -24,3 +24,12 @@ func ReadJSON(strJson string, i interface{}) error {
 	return json.Unmarshal([]byte(strJson), i)
 }
 ```
+2、json字符串的数据类型要一致，否则解析会失败，如
+```
+`[{"sku":4250627,"buyNum":1},{"sku":4244907,"buyNum":1},{"sku":4229722,"buyNum":1}]`
+```
+和
+```
+`[{"sku":"4250627","buyNum":1},{"sku":"4244907","buyNum":1},{"sku":4229722,"buyNum":1}]`
+```
+下面这个解析会失败的,注意它们的区别sku是否有""
